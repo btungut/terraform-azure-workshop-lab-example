@@ -49,7 +49,7 @@ Once the execution is complete, three files should be created in `.assets` direc
 - BT-WORKSHOP-ROOT.cer
 - BT-WORKSHOP-ROOT.b64
 
-![certificate is created](.img/10-cert-created.png =640x)
+<img src=".img/10-cert-created.png" width="640">
 
 ### Create the common resources
 You will provision the following resources in this step:
@@ -70,12 +70,12 @@ You will provision the following resources in this step:
 2. You will be prompted for `Execute 01-common` step which is responsible for common resource group, vnet and subnet creations.
    **Type `Y` and press ENTER to continue.**
 
-   ![default](.img/5-step-01.png | width=480)
+   <img src=".img/5-step-01.png" width="640">
 
    Once the `terraform plan` execution is completed, you will be informed about the resources to be created.
    Again, **Type `Y` and press ENTER to continue.**
 
-   ![default](.img/6-step-01-confirm.png | width=480)
+   <img src=".img/6-step-01-confirm.png" width="640">
 
 
 
