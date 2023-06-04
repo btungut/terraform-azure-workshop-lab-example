@@ -1,6 +1,18 @@
-# Azure Workshop Lab Provisioning with Terraform
+# An Example for Azure Workshop Lab Provisioning with Terraform
 
 Assume you are a workshop instructor who needs to quickly set up the lab environments for the attendees. Without a doubt, you should have experience with IaaC tools in order to standardize your environment requirements in manifests.
+
+---
+
+## Motivation and comments from author
+As a consultant who has been presenting and performing PoCs with clients, I recognized a need for IaaC to provision the environments. This is the motivation of this repository.
+
+I really hope that you will be able to find some helpful techniques and knowledge in this repository.
+
+---
+
+
+
 
 ## Context
 
