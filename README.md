@@ -35,7 +35,7 @@ This repository includes an implementation of Terraform manifests that responsib
     - `arc-k3s-contoso-01-prod` **TODO** Arc-Enabled Kubernetes Cluster
 
 
-## Install 01 - Create Self Signed Certificate for VPN
+## 1. Create Self Signed Certificate for VPN
 
 1. To complete this task, please `cd` to root directory then run the following snippet:
     ```bash
@@ -50,7 +50,7 @@ Once the execution is complete, three files should be created in `.assets` direc
 
 <img src=".img/10-cert-created.png" width="640">
 
-## Install 02 - Create the common resources
+## 2. Create the common resources
 You will provision the following resources in this step:
 - Common Resource Group
   - Common VNet
@@ -88,11 +88,48 @@ You will provision the following resources in this step:
       - This task is utilizing the certificate that located in `.assets` directory.
 
       - **Type `Y` and press ENTER to continue both for plan and execution.**
+  
         <img src=".img/8-step-02-confirm.png" width="640">
 
       - As it mentioned before, creation of the VPN may take more than twenty minutes.
+
         <img src=".img/9-step-02-running.png" width="640">
 
 
-## Install 03 - Provision the resources per attendee
+## 3. Provision the resources per attendee
+
+In this task, you will execute the `03-provision-lab.sh` bash script which required two arguments;
+  1. Unique name (e.g.: contoso)
+  2. Indice of attendee, it should be unique also for per attendee (e.g..: 8 for 8th people)
+
+1. Please `cd` to root directory, then run the following script with two arguments that suitable for your environment
+    ```bash
+    chmod +x ./03-provision-lab.sh
+    ./02-install-common.sh "contoso" 8
+    ```
+
+      - **Type `Y` and press ENTER to continue** once the `terraform plan` is completed
+
+        <img src=".img/11-step-03-confirm.png" width="640">
+
+      - While the execution is progressing, you will see the results like below:
+  
+        <img src=".img/12-step-03-running.png" width="640">
+
+2. Once the execution is completed, you will see the `terraform apply is succeeded for 8` output from script, after that, please visit the Azure Portal.
+       
+   - Your `infra` and environment resource groups should be created like below
+        
+      <img src=".img/13-step-03-rg.png" width="240">
+
+    - `infra` namespace should includes the VMs and its dependencies
+      
+      <img src=".img/14-infra.png" width="640">
+
+## Download the VPN Client
+TODO
+
+## SSH into one of the VM
+TODO
+### Ensure Kubernetes is working
 TODO
