@@ -138,8 +138,9 @@ In this task, you will execute the `03-provision-lab.sh` bash script which requi
       
       <img src=".img/14-infra.png" width="640">
 
-## Download the VPN Client
-TODO
+## Connect to VPN
+1. Before installing and connection to VPN you created, you should install the self signed certificate you created in first step.
+   1. Navigate to `.assets` directory
 
 ## SSH into one of the VM
 TODO

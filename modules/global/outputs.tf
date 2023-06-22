@@ -1,29 +1,15 @@
 output "hosting_environments" {
-  value = {
-    devtest = {
-      subnet_name = "devtest"
-      kv_name = "test"
-      k8s_vm_ip_prefix = "${local.ip_prefix}.4"
-    }
-
-    preprod = {
-      subnet_name = "preprod"
-      kv_name = "preprod"
-      k8s_vm_ip_prefix = "${local.ip_prefix}.8"
-    }
-
-    prod = {
-      subnet_name = "prod"
-      kv_name = "prod"
-      k8s_vm_ip_prefix = "${local.ip_prefix}.12"
-    }
-  }
+  value = toset([
+    "devtest",
+    "preprod",
+    "prod"
+  ])
 }
 
 output "common" {
   value = {
 
-    rg_name            = "rg-${local.common_resources_suffix}"
+    rg_name         = "rg-${local.common_resources_suffix}"
     location        = local.location_short
     location_long   = local.location
     azure_tenant_id = data.azurerm_client_config.current.tenant_id
@@ -46,25 +32,26 @@ output "vnet" {
     address_space = ["${local.ip_prefix}.0.0/16"]
 
     subnets = {
-
-      common = {
-        address_prefix = "${local.ip_prefix}.0.0/22"
+      vms = {
+        ip_prefix = local.subnet_vms_prefix
+        address_prefix = "${local.subnet_vms_prefix}.0/24"
       }
-
       devtest = {
-        address_prefix = "${local.ip_prefix}.4.0/22"
+        ip_prefix = local.subnet_devtest_prefix
+        address_prefix = "${local.subnet_devtest_prefix}.0/24"
       }
 
       preprod = {
-        address_prefix = "${local.ip_prefix}.8.0/22"
+        ip_prefix = local.subnet_preprod_prefix
+        address_prefix = "${local.subnet_preprod_prefix}.0/24"
       }
 
       prod = {
-        address_prefix = "${local.ip_prefix}.12.0/22"
+        ip_prefix = local.subnet_prod_prefix
+        address_prefix = "${local.subnet_prod_prefix}.0/24"
       }
-
       GatewaySubnet = { # It needs to be named as 'GatewaySubnet' due to rules of Azure
-        address_prefix = "${local.ip_prefix}.254.0/24"
+        address_prefix = "${local.subnet_gateway_prefix}.0/24"
       }
     }
   }

@@ -1,5 +1,5 @@
 module "global" {
-  source    = "../.global"
+  source    = "../modules/global"
   corp_name = var.corp_name
 }
 
