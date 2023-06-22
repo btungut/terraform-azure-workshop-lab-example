@@ -8,7 +8,7 @@ ROOT_B64_FILE="${ROOT_BASE}.b64"
 ROOT_KEY_FILE="${ROOT_BASE}.key"
 echo -e "WELCOME!\nThis script and terraform manifests were developed by Burak Tungut for PoC purposes\nhttps://github.com/btungut\n\n"
 
-[ -d ".assets" ] || { echo ".assets directory does not exist"; exit 1;}
+[ -d ".assets" ] || { mkdir -p ".assets"; }
 EXIST="0"
 [ -f ".assets/${ROOT_CER_FILE}" ] && { EXIST="1"; }
 [ -f ".assets/${ROOT_B64_FILE}" ] && { EXIST="1"; }
