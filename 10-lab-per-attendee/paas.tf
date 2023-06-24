@@ -18,6 +18,7 @@ resource "azurerm_key_vault" "kv_common" {
   sku_name            = "standard"
 
   name = "kv-${local.resource_name_prefix}-common"
+  access_policy = local.kv_default_access_policy
 }
 
 resource "azurerm_key_vault" "kv" {
@@ -28,4 +29,5 @@ resource "azurerm_key_vault" "kv" {
   for_each            = module.global.hosting_environments
   resource_group_name = azurerm_resource_group.env[each.key].name
   name                = "kv-${local.resource_name_prefix}-${each.key}"
+  access_policy = local.kv_default_access_policy
 }

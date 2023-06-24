@@ -3,6 +3,17 @@ locals {
   resource_name_prefix = "${var.corp_name}-${local.lab_number}"
   kubeconfig_file_name = "kubeconfig.yaml"
   linux_username       = "azureuser"
+  kv_default_access_policy = [
+    {
+      tenant_id               = module.global.common.azure_tenant_id
+      object_id               = module.global.common.azure_object_id
+      application_id          = module.global.common.azure_object_id
+      secret_permissions      = ["Delete", "Get", "List", "Set"]
+      certificate_permissions = []
+      key_permissions         = []
+      storage_permissions     = []
+    }
+  ]
   k3s_vm_post_install_script = jsonencode({
     "commandToExecute" = <<EOF
           sudo apt-get update -y &&
