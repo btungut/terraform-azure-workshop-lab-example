@@ -7,11 +7,11 @@ locals {
     {
       tenant_id               = module.global.common.azure_tenant_id
       object_id               = module.global.common.azure_object_id
-      application_id          = module.global.common.azure_object_id
-      secret_permissions      = ["Delete", "Get", "List", "Set"]
-      certificate_permissions = []
-      key_permissions         = []
-      storage_permissions     = []
+      application_id          = null
+      secret_permissions      = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
+      certificate_permissions = ["Get", "List"]
+      key_permissions         = ["Get", "List"]
+      storage_permissions     = ["Get", "List"]
     }
   ]
   k3s_vm_post_install_script = jsonencode({
